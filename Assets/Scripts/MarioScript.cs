@@ -17,6 +17,8 @@ public class MarioScript : MonoBehaviour
     private Animator _animator;
     private Vector2 dir;
     private bool _intentionToJump;
+    public int maxJumps;
+    private int currentJumps;
 
     // Start is called before the first frame update
     void Start()
@@ -79,10 +81,11 @@ public class MarioScript : MonoBehaviour
         rb.velocity = nVel;
 
 
-        if (_intentionToJump && grnd)
+        if (_intentionToJump && (grnd || currentJumps < maxJumps - 1))
         {
             _animator.Play("jumpAnimation");
             AddJumpForce();
+            currentJumps++;
         }
         _intentionToJump = false;
 
@@ -101,6 +104,7 @@ public class MarioScript : MonoBehaviour
         RaycastHit2D collision = Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundMask);
         if (collision)
         {
+            currentJumps = 0;
             return true;
         }
         return false;
