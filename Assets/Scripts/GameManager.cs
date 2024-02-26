@@ -67,6 +67,16 @@ public class GameManager : MonoBehaviour
         // oye, audiomanager, limpia todos los sonidos que estan sonando
         AudioManager.instance.ClearAudios();
     }
+    public int GetFireWorks()
+    {
+        return points;
+    }
+
+    // setter
+    public void SetFireWorks(int value)
+    {
+        points = value;
+    }
 
     public void ExitGame()
     {
