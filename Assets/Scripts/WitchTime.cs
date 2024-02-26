@@ -14,7 +14,7 @@ public class WitchTime : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
         Time.timeScale = 0.25f;
-        AudioManager.instance.PlayAudio(Timer, "witchTime");
+        src = AudioManager.instance.PlayAudio(Timer, "witchTime");
 
             StartCoroutine(TimeOut()); 
         }
